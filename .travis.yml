@@ -1,0 +1,13 @@
+sudo: required
+services:
+  - docker
+
+
+before_install:
+  - docker build -t zhifanli/docker-ci-cd -f Dockerfile.dev .
+
+
+
+
+script:
+  - docker run -e CI=true zhifanli/docker-ci-cd npm run test -- --coverage
