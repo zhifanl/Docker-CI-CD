@@ -1,4 +1,7 @@
 sudo: required
+language: generic
+
+
 services:
   - docker
 
@@ -10,4 +13,4 @@ before_install:
 
 
 script:
-  - docker run -e CI=true zhifanli/docker-ci-cd npm run test -- --coverage
+  - docker run -e CI=true zhifanli/docker-ci-cd npm run test
