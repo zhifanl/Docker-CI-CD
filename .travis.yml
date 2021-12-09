@@ -14,3 +14,18 @@ before_install:
 
 script:
   - docker run -e CI=true zhifanli/docker-ci-cd npm run test
+
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ca-central-1"
+  app: "docker-ci-cd"
+  env: "Dockercicd-env"
+  bucket_name: "elasticbeanstalk-ca-central-1-862931123853"
+  bucket_path: "docker-ci-cd"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+
